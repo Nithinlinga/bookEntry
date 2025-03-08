@@ -19,9 +19,9 @@ public class UserRepoImpl {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public List<User> getUserSA(){
+    public List<User> getUserSA(String username){
         Query query=new Query();
-        query.addCriteria(Criteria.where("username").is("ram"));
+        query.addCriteria(Criteria.where("username").is(username));
         List<User> users=mongoTemplate.find(query,User.class);
 
         return users;
