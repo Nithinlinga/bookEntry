@@ -7,3 +7,4 @@ spring:
       post: 27017
       database: journaldb
       auto-index-creation: true
+weather_api_key: f46e4ea18951abbdb90ccb30fd064c2b
