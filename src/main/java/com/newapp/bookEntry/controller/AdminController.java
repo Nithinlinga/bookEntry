@@ -2,6 +2,7 @@ package com.newapp.bookEntry.controller;
 
 import com.newapp.bookEntry.Entity.User;
 import com.newapp.bookEntry.cache.AppCache;
+import com.newapp.bookEntry.repository.UserRepoImpl;
 import com.newapp.bookEntry.service.UserEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,8 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private UserEntryService userEntryService;
+    @Autowired
+    private UserRepoImpl userRepo;
     @Autowired
     private AppCache appCache;
     @GetMapping("/all-users")
@@ -32,8 +35,10 @@ public class AdminController {
     }
 
     @GetMapping("/clear-app-cache")
-    public void clearAppCache(){
-        appCache.init();
+    public ResponseEntity<?> clearAppCache(){
+//        appCache.init();
+        return new ResponseEntity<>(userRepo.getUserSA(),HttpStatus.OK);
+
     }
 
 }
