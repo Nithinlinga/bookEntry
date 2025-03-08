@@ -7,4 +7,15 @@ spring:
       post: 27017
       database: journaldb
       auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: nithinlinga46@gmail.com
+    password: irqy mdmq iylb ghxl
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttles:
+            enable: true
 weather_api_key: f46e4ea18951abbdb90ccb30fd064c2b
