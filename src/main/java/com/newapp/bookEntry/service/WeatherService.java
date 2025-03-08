@@ -8,9 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+@Service
 
 public class WeatherService {
     private static final String apikey="f46e4ea18951abbdb90ccb30fd064c2b";
