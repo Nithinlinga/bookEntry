@@ -31,7 +31,7 @@ public class BookEntryApplication {
 
 	@GetMapping("/")
 	public String getName(){
-		return "This is my New Springboot server"
+		return "This is my New Springboot server";
 	}
 
 }
