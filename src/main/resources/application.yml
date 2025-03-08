@@ -1,0 +1,9 @@
+spring:
+  application:
+    name:bookEntry
+  data:
+    mongodb:
+      uri: mongodb://nithinlinga2:Nithin@ac-e1ztx5j-shard-00-00.otzisrp.mongodb.net:27017,ac-e1ztx5j-shard-00-01.otzisrp.mongodb.net:27017,ac-e1ztx5j-shard-00-02.otzisrp.mongodb.net:27017/?replicaSet=atlas-xywy94-shard-0&ssl=true&authSource=admin
+      post: 27017
+      database: journaldb
+      auto-index-creation: true
