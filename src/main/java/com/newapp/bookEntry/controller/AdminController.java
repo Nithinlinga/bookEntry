@@ -1,6 +1,7 @@
 package com.newapp.bookEntry.controller;
 
 import com.newapp.bookEntry.Entity.User;
+import com.newapp.bookEntry.cache.AppCache;
 import com.newapp.bookEntry.service.UserEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,8 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private UserEntryService userEntryService;
-
+    @Autowired
+    private AppCache appCache;
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers(){
         List<User> all=userEntryService.getAll();
@@ -27,6 +29,11 @@ public class AdminController {
     public ResponseEntity<?> createAdmin(@RequestBody User admin){
         userEntryService.saveAdmin(admin);
         return new ResponseEntity<>(admin,HttpStatus.CREATED);
+    }
+
+    @GetMapping("/clear-app-cache")
+    public void clearAppCache(){
+        appCache.init();
     }
 
 }
