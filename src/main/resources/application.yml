@@ -1,18 +1,23 @@
-
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
   application:
     name: bookEntry
   data:
     mongodb:
-      uri: mongodb://nithinlinga2:Nithin@ac-e1ztx5j-shard-00-00.otzisrp.mongodb.net:27017,ac-e1ztx5j-shard-00-01.otzisrp.mongodb.net:27017,ac-e1ztx5j-shard-00-02.otzisrp.mongodb.net:27017/?replicaSet=atlas-xywy94-shard-0&ssl=true&authSource=admin
-      post: 27017
+      uri: ${MONGO_URI}
       database: journaldb
       auto-index-creation: true
   mail:
     host: smtp.gmail.com
     port: 587
-    username: nithinlinga46@gmail.com
-    password: irqy mdmq iylb ghxl
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -20,4 +25,4 @@ spring:
           starttls:
             enable: true
 
-weather_api_key: f46e4ea18951abbdb90ccb30fd064c2b
+weather_api_key: ${WEATHER_API_KEY}
