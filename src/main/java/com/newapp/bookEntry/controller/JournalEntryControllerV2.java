@@ -34,11 +34,11 @@ public class JournalEntryControllerV2 {
         if(userList!=null && !userList.isEmpty()){
             return new ResponseEntity<>(userList,HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("No Journals Found", HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
-    public ResponseEntity<JournalEntry> addJournal(@RequestBody JournalEntry newEntry) {
+    public ResponseEntity<?> addJournal(@RequestBody JournalEntry newEntry) {
         try {
             Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
             String username= authentication.getName();
@@ -46,14 +46,14 @@ public class JournalEntryControllerV2 {
             journalEntryService.saveEntry(newEntry, username);
             return new ResponseEntity<>(newEntry, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error occurred",HttpStatus.BAD_REQUEST);
 
         }
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<JournalEntry> getJournalById(@PathVariable ObjectId id) {
+    public ResponseEntity<?> getJournalById(@PathVariable ObjectId id) {
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
         String username=authentication.getName();
         User user=userEntryService.findByname(username);
@@ -64,7 +64,7 @@ public class JournalEntryControllerV2 {
         if (journalEntry.isPresent()) {
             return new ResponseEntity<>(journalEntry.get(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Journal not Found",HttpStatus.BAD_REQUEST);
         }
         }
         else {
@@ -83,9 +83,9 @@ public class JournalEntryControllerV2 {
         }
         boolean removed=journalEntryService.deleteJournalbyId(id,username);
         if(removed)
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>("Successfully Removed",HttpStatus.OK);
         else {
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND    );
+        return new ResponseEntity<>("Journal Not removed because journal not found",HttpStatus.NOT_FOUND    );
 
         }
     }
@@ -107,7 +107,7 @@ public class JournalEntryControllerV2 {
                 }
         }
         else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Journal Not found so cannot Update",HttpStatus.NOT_FOUND);
         }
 
 
