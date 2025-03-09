@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableTransactionManagement
 @EnableScheduling
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class BookEntryApplication {
 
 	public static void main(String[] args) {
@@ -34,7 +36,8 @@ public class BookEntryApplication {
 
 	@GetMapping
 	public String getName(){
-		return "This is my New Springboot server";
+		return "This is my New SpringBoot server";
 	}
+
 
 }
